@@ -1,45 +1,45 @@
-const fs = require('fs')
-const { green } = require('chalk')
+const fs = require("fs");
+const { green } = require("chalk");
 
-const { warn } = require('./logger')
-const appPaths = require('../app-paths')
+const { warn } = require("./logger");
+const appPaths = require("../app-paths");
 
 module.exports = function (cfg) {
-  let file
-  let content
-  let error = false
+  let file;
+  let content;
+  let error = false;
 
-  file = appPaths.resolve.app(cfg.sourceFiles.indexHtmlTemplate)
-  content = fs.readFileSync(file, 'utf-8')
+  file = appPaths.resolve.app(cfg.sourceFiles.indexHtmlTemplate);
+  content = fs.readFileSync(file, "utf-8");
 
-  if (content.indexOf('<base href') > -1) {
+  if (content.indexOf("<base href") > -1) {
     warn(`Please remove the <base> tag from /src/index.template.html
    This is taken care of by Quasar automatically.
-  `)
-    error = true
+  `);
+    error = true;
   }
 
-  file = appPaths.resolve.app(cfg.sourceFiles.rootComponent)
-  content = fs.readFileSync(file, 'utf-8')
-  if (content.indexOf('q-app') === -1) {
-    console.log()
+  file = appPaths.resolve.app(cfg.sourceFiles.rootComponent);
+  content = fs.readFileSync(file, "utf-8");
+  if (content.indexOf(cfg.rootId) === -1) {
+    console.log();
     warn(`Quasar requires a minor change to the root component:
    ${file}
 
-  Please add: id="q-app" (or write #q-app if using Pug)
+  Please add: id="${cfg.rootId}" (or write #${cfg.rootId} if using Pug)
   to the outermost HTML element of the template.
 
-${green('Example:')}
+${green("Example:")}
   <template>
-    <div id="q-app">
+    <div id="${cfg.rootId}">
       ...
     </div>
   </template>
-`)
-    error = true
+`);
+    error = true;
   }
 
   if (error === true) {
-    process.exit(1)
+    process.exit(1);
   }
-}
+};

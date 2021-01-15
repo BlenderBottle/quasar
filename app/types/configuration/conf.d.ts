@@ -56,6 +56,7 @@ type QuasarSourceFilesConfiguration = Partial<{
 
 interface BaseQuasarConfiguration {
   /** Boot files to load. Order is important. */
+  rootId?: string;
   boot?: QuasarBootConfiguration;
   /**
    * Global CSS/Stylus/SCSS/SASS/... files from `/src/css/`,
