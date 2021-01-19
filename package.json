@@ -1,0 +1,22 @@
+{
+  "name": "quasar",
+  "version": "1.0.0",
+  "description": "![Quasar Framework logo](https://cdn.quasar.dev/logo/svg/quasar-logo-full-inline.svg)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BlenderBottle/quasar.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BlenderBottle/quasar/issues"
+  },
+  "homepage": "https://github.com/BlenderBottle/quasar#readme"
+}
